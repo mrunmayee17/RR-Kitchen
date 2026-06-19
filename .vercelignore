@@ -1,0 +1,15 @@
+.DS_Store
+.claude/
+.env
+.git/
+.guardrails/
+.history/
+.playwright-mcp/
+.venv/
+.vercel/
+__pycache__/
+*.pyc
+data/
+backend/__pycache__/
+frontend/.DS_Store
+frontend/assets/.DS_Store
