@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipes | Rupa & Ruchi's Kitchen</title>
+    <meta
+      name="description"
+      content="Browse Rupa & Ruchi's Kitchen's coastal Konkani recipes and modern Bay Area rituals."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Rupa & Ruchi's Kitchen home">
+        <span class="brand-mark">RR</span>
+        <span>
+          <strong>Rupa & Ruchi's Kitchen</strong>
+          <small>Konkan roots · Bay Area Rituals</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/heritage">Heritage</a>
+        <a href="/recipes" aria-current="page">Recipes</a>
+        <span id="userChip" class="user-chip" hidden></span>
+      </nav>
+    </header>
+
+    <main id="recipes-page">
+      <section class="recipe-workspace" id="recipes">
+        <aside class="left-tabs" aria-label="Recipe list">
+          <div class="section-heading">
+            <h2>The recipe house</h2>
+            <p class="section-subtitle">Rupa's roots &amp; Ruchi's rituals</p>
+          </div>
+          <div id="recipeList" class="recipe-list-items"></div>
+        </aside>
+
+        <section class="recipe-view" aria-live="polite">
+          <div class="recipe-media">
+            <img id="recipeImage" alt="">
+            <span id="recipeStatus" class="status-pill"></span>
+          </div>
+          <div class="recipe-content">
+            <p id="recipeCategory" class="eyebrow"></p>
+            <h2 id="recipeTitle"></h2>
+            <p id="recipeDescription" class="recipe-description"></p>
+            <p id="recipeSource" class="recipe-source"></p>
+
+            <dl class="recipe-meta">
+              <div><dt>Prep</dt><dd id="recipePrep"></dd></div>
+              <div><dt>Cook</dt><dd id="recipeCook"></dd></div>
+              <div><dt>Serves</dt><dd id="recipeServes"></dd></div>
+            </dl>
+
+            <div class="recipe-columns">
+              <section>
+                <h3>Ingredients</h3>
+                <ul id="ingredientList"></ul>
+              </section>
+              <section>
+                <h3>Method</h3>
+                <ol id="methodList"></ol>
+              </section>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>Rupa & Ruchi's Kitchen · Coastal Konkani Recipes · Modern Bay Area rituals</p>
+    </footer>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="script.js"></script>
+    <script src="momo-panel.js"></script>
+    <script src="momo.js"></script>
+  </body>
+</html>

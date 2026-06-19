@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Recipe editor | Rupa & Ruchi's Kitchen</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Rupa & Ruchi's Kitchen home">
+        <span class="brand-mark">RR</span>
+        <span>
+          <strong>Rupa & Ruchi's Kitchen</strong>
+          <small>Private recipe atelier</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/">View site</a>
+      </nav>
+    </header>
+
+    <main class="editor-layout">
+      <aside class="editor-list" aria-label="Recipe list">
+        <div class="section-heading">
+          <p class="eyebrow">Recipe book</p>
+          <h2>All recipes</h2>
+        </div>
+        <div class="list-actions">
+          <button id="newRecipeBtn" type="button" class="primary-action">New recipe</button>
+          <label class="file-button">
+            Import
+            <input id="importInput" type="file" accept="application/json">
+          </label>
+          <button id="exportBtn" type="button">Export</button>
+        </div>
+        <div id="recipeList" class="recipe-list-items"></div>
+      </aside>
+
+      <section class="editor-main">
+        <div class="section-heading">
+          <p class="eyebrow">Kitchen notebook</p>
+          <h2 id="editorTitle">Edit recipe</h2>
+          <p id="editorStatus" class="recipe-source"></p>
+        </div>
+
+        <form id="recipeForm">
+          <div class="form-grid">
+            <label>Recipe name<input id="titleInput" name="title" required></label>
+            <label>Category<input id="categoryInput" name="category" required></label>
+            <label>Prep time<input id="prepInput" name="prep" required></label>
+            <label>Cook time<input id="cookInput" name="cook" required></label>
+            <label>Serves<input id="servesInput" name="serves" required></label>
+            <label>Recipe photo<input id="imageInput" name="image" type="file" accept="image/*"></label>
+          </div>
+
+          <label>Short intro
+            <textarea id="descriptionInput" name="description" rows="4" required></textarea>
+          </label>
+          <label>Ingredients (one per line)
+            <textarea id="ingredientsInput" name="ingredients" rows="8" required></textarea>
+          </label>
+          <label>Method (one step per line)
+            <textarea id="methodInput" name="method" rows="8" required></textarea>
+          </label>
+
+          <div class="editor-actions">
+            <label class="publish-toggle">
+              <input id="publishedInput" name="published" type="checkbox">
+              <span>Published</span>
+            </label>
+            <button class="primary-action" type="submit">Save recipe</button>
+            <button id="deleteRecipeBtn" type="button">Delete</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Rupa & Ruchi's Kitchen · Private editor · Keep this URL secret</p>
+    </footer>
+
+    <script src="/editor.js"></script>
+  </body>
+</html>
