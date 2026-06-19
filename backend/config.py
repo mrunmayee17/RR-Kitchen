@@ -1,5 +1,6 @@
 """Central configuration for Rupa & Ruchi's Kitchen, loaded from the project-root .env."""
 
+import json
 import os
 from pathlib import Path
 
@@ -25,6 +26,7 @@ USE_VERTEX = _flag("GOOGLE_GENAI_USE_VERTEXAI")
 GOOGLE_CLOUD_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT")
 GOOGLE_CLOUD_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
 MOMO_LIVE_MODEL = os.getenv("MOMO_LIVE_MODEL", "gemini-live-2.5-flash-native-audio")
+GOOGLE_SERVICE_ACCOUNT_JSON = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "")
 
 # --- App secrets ---
 EDITOR_TOKEN = os.getenv("EDITOR_TOKEN", "")
@@ -33,12 +35,21 @@ GOOGLE_OAUTH_CLIENT_ID = os.getenv("GOOGLE_OAUTH_CLIENT_ID", "")
 
 
 def make_genai_client():
-    """A google-genai client configured for Vertex AI (ADC) or the Developer API."""
+    """A google-genai client configured for Vertex AI or the Developer API."""
     from google import genai
 
     if USE_VERTEX:
+        credentials = None
+        if GOOGLE_SERVICE_ACCOUNT_JSON:
+            from google.oauth2 import service_account
+
+            credentials = service_account.Credentials.from_service_account_info(
+                json.loads(GOOGLE_SERVICE_ACCOUNT_JSON),
+                scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            )
         return genai.Client(
             vertexai=True,
+            credentials=credentials,
             project=GOOGLE_CLOUD_PROJECT,
             location=GOOGLE_CLOUD_LOCATION,
         )
